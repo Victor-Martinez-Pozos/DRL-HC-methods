@@ -1,10 +1,12 @@
 from model import FCNetwork
 import numpy as np
+from collections import deque
+
 
 model = FCNetwork()
 
 
-def hill_climbing(n_episodes=1000, max_t=1000, gamma=1.0, print_every=100, noise_scale=1e-2):
+def hill_climbing(env, n_episodes=1000, max_t=1000, gamma=1.0, print_every=100, noise_scale=1e-2):
     """Implementation of hill climbing with cross-entropy and adaptive noise scaling.
         
     Params
@@ -19,6 +21,9 @@ def hill_climbing(n_episodes=1000, max_t=1000, gamma=1.0, print_every=100, noise
     scores = []
     best_R = -np.Inf
     best_w = model.w
+
+    #print(type(n_episodes))
+
     for i_episode in range(1, n_episodes+1):
         rewards = []
         state = env.reset()
