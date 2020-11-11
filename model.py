@@ -11,10 +11,10 @@ class FCNetwork():
         return x
     
     def save(self, name):
-        with open(f'{name}.npy', 'wb') as f:
-            np.save(f, self.w)
+        #with open(f'{name}.npy', 'wb') as f:
+        np.save(name, self.w)
 
     def load(self, name):
-        with open(f'{name}', 'wb') as f:
-            np.load(f)
-
+        #with open(f'{name}', 'wb') as f:
+        self.w = np.load(name, allow_pickle=True)
+        
